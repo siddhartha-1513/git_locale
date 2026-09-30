@@ -1,0 +1,32 @@
+name: Copy Files
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Source directory"
+        required: true
+        default: "source"
+      destination:
+        description: "Destination directory"
+        required: true
+        default: "destination"
+
+jobs:
+  copy-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Copy files
+        run: |
+          echo "Copying files..."
+          echo "Source: ${{ inputs.source }}"
+          echo "Destination: ${{ inputs.destination }}"
+
+          mkdir -p "${{ inputs.destination }}"
+          cp -rf "${{ inputs.source }}/." "${{ inputs.destination }}/"
+
+          echo "Files copied successfully."
