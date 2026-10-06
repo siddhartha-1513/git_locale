@@ -3,30 +3,41 @@ name: Copy Files
 on:
   workflow_dispatch:
     inputs:
-      source:
+      source_directory:
         description: "Source directory"
         required: true
-        default: "source"
-      destination:
+        type: string
+
+      destination_directory:
         description: "Destination directory"
         required: true
-        default: "destination"
+        type: string
 
 jobs:
-  copy-files:
+  copy_files:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Copy files
+        shell: bash
         run: |
-          echo "Copying files..."
-          echo "Source: ${{ inputs.source }}"
-          echo "Destination: ${{ inputs.destination }}"
+          SOURCE="${{ inputs.source_directory }}"
+          DESTINATION="${{ inputs.destination_directory }}"
 
-          mkdir -p "${{ inputs.destination }}"
-          cp -rf "${{ inputs.source }}/." "${{ inputs.destination }}/"
+          echo "Source      : $SOURCE"
+          echo "Destination : $DESTINATION"
 
-          echo "Files copied successfully."
+          if [ ! -d "$SOURCE" ]; then
+            echo "ERROR: Source directory does not exist."
+            exit 1
+          fi
+
+          mkdir -p "$DESTINATION"
+
+          # Copy all files and folders while preserving structure
+          cp -r "$SOURCE"/. "$DESTINATION"/
+
+          echo "Copy completed successfully."
+
+          echo "Destination contents:"
+          ls -lah "$DESTINATION"
