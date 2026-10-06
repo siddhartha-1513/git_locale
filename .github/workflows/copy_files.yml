@@ -18,9 +18,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Copy files
         shell: bash
         run: |
+
           SOURCE="${{ inputs.source_directory }}"
           DESTINATION="${{ inputs.destination_directory }}"
 
@@ -32,12 +37,14 @@ jobs:
             exit 1
           fi
 
-          mkdir -p "$DESTINATION"
+          if [ ! -d "$DESTINATION" ]; then
+            echo "ERROR: Destination directory does not exist."
+            exit 1
+          fi
 
-          # Copy all files and folders while preserving structure
           cp -r "$SOURCE"/. "$DESTINATION"/
 
-          echo "Copy completed successfully."
+          echo "Files copied successfully."
 
           echo "Destination contents:"
           ls -lah "$DESTINATION"
