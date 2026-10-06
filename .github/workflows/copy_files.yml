@@ -1,0 +1,43 @@
+name: Copy Files
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_directory:
+        description: "Source directory"
+        required: true
+        type: string
+
+      destination_directory:
+        description: "Destination directory"
+        required: true
+        type: string
+
+jobs:
+  copy_files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copy files
+        shell: bash
+        run: |
+          SOURCE="${{ inputs.source_directory }}"
+          DESTINATION="${{ inputs.destination_directory }}"
+
+          echo "Source      : $SOURCE"
+          echo "Destination : $DESTINATION"
+
+          if [ ! -d "$SOURCE" ]; then
+            echo "ERROR: Source directory does not exist."
+            exit 1
+          fi
+
+          mkdir -p "$DESTINATION"
+
+          # Copy all files and folders while preserving structure
+          cp -r "$SOURCE"/. "$DESTINATION"/
+
+          echo "Copy completed successfully."
+
+          echo "Destination contents:"
+          ls -lah "$DESTINATION"
