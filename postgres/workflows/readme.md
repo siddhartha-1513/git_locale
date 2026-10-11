@@ -1,1 +1,1 @@
-Snapshot 2 postgres workflows readme file
+Snapshot postgres workflow readme file

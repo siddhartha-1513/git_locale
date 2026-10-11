@@ -1,1 +1,1 @@
-Snapshot 2 playbook readme file
+Snapshot palybook readme file

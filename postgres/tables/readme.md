@@ -1,1 +1,1 @@
-Snapshot 2 postgres table readme file
+Snapshot postgres tables readme file
