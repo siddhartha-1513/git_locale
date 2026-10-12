@@ -28,9 +28,11 @@ jobs:
       - name: Copy files
         shell: bash
         run: |
-
-          SOURCE="${{ inputs.source_directory }}"
-          DESTINATION="${{ inputs.destination_directory }}"
+          set -e
+          
+          env:
+            SOURCE="${{ inputs.source_directory }}"
+            DESTINATION="${{ inputs.destination_directory }}"
 
           echo "Source      : $SOURCE"
           echo "Destination : $DESTINATION"
