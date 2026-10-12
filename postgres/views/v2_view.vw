@@ -1,2 +1,1 @@
-Select 'v1_view' as view_name;
--- View from cycle_!
+Select 'v2_view' as view_name;
