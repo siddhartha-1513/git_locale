@@ -1,1 +1,1 @@
-Select 't2_table' as table_name;
+Select 't2_table_update' as table_name;
