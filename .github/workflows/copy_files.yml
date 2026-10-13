@@ -62,7 +62,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit; files are already up to date"
             exit 0
-          if
+          fi
 
           git commit -m "Copy files from release"
 
