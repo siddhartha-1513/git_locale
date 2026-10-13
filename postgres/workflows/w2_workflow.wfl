@@ -1,1 +1,1 @@
-Select 'w2_workflow' as workflow;
+Select 'w2_workflow_changes' as workflow;
