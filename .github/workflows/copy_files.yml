@@ -57,6 +57,14 @@ jobs:
           git config user.name siddhartha-1513
           git config user.email sharmasiddhartha998@gmail.com
 
+          echo "Remote Git:"
+          git remote -v
+
+          echo "Current branch:"
+          git branch --show-current
+
+          echo "Git status"
+          git status
           git add "${{ inputs.destination_directory }}"
 
           if git diff --cached --quiet; then
