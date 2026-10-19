@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: hello step
-        run: echo "Hello World, I'am ${{ vars.USER_NAME }}."
-        run: echo "Hello World, I'am ${{ secrets.PSEUDO_SET }}."
+        run: |
+          echo "Hello World, I'am ${{ vars.USER_NAME }}."
+          echo "Hello World, I'am ${{ secrets.PSEUDO_SET }}."
       - name: Checkt-out Repo
         uses: actions/checkout@v4
         
