@@ -19,6 +19,7 @@ jobs:
         
       - name: GitHub-Commad
         run: |
+          cat index.html
           echo "git status"
           git status
           echo "git branch"
