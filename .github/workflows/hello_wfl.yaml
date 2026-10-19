@@ -1,5 +1,11 @@
 name: hello_wfl
-on: workflow_dispatch
+on: 
+  push:
+    branches:
+      - main
+      - feature-readme
+  pull_request:
+    branches: main
 jobs:
   hello:
     runs-on: ubuntu-latest
