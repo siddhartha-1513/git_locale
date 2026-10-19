@@ -1,9 +1,5 @@
 name: hello_wfl
-on: 
-  push:
-    branches:
-      - main
-      - feature-readme
+on:
   pull_request:
     branches: main
 jobs:
