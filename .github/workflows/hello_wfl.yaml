@@ -1,7 +1,18 @@
 name: hello_wfl
 on:
-  pull_request:
-    branches: main
+  workflow_dispatch:
+    inputs:
+      user_input:
+        description: User Input
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - int
+          - tst
+          - prd
+      
 jobs:
   hello:
     runs-on: ubuntu-latest
