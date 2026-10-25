@@ -21,9 +21,7 @@ jobs:
         run: |
           echo "Hello World, I'am ${{ vars.USER_NAME }}."
           echo "Hello World, I'am ${{ secrets.PSEUDO_SET }}."
-          echo "GitHub Context ${{ github.workflow }}"
-          echo "GitHub Context ${{ github.event_name }}"
-          echo "GitHub Context ${{ github.ref }}"
+          echo "steps Context ${{ toJson(steps) }}"
       - name: Checkt-out Repo
         uses: actions/checkout@v4
         
